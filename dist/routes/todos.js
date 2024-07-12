@@ -10,7 +10,7 @@ router.post('/', todos_1.createTodo);
 // Rotta per recuperare tutti i todo
 router.get('/', todos_1.getTodos);
 // Rotta per modificare i todo
-router.patch('/:id');
+router.patch('/:id', todos_1.updateTodos);
 // Rotta per eliminare i todo
 router.delete('/:id');
 exports.default = router;

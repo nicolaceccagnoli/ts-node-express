@@ -2,7 +2,7 @@ import { Router } from 'express';
 // const express = require('express');
 // const Router = express.Router;
 
-import { createTodo, getTodos } from '../controllers/todos';
+import { createTodo, getTodos, updateTodos } from '../controllers/todos';
 
 const router = Router();
 
@@ -13,7 +13,7 @@ router.post('/', createTodo);
 router.get('/', getTodos);
 
 // Rotta per modificare i todo
-router.patch('/:id', );
+router.patch('/:id', updateTodos);
 
 // Rotta per eliminare i todo
 router.delete('/:id', );
