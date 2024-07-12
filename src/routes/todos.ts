@@ -2,7 +2,7 @@ import { Router } from 'express';
 // const express = require('express');
 // const Router = express.Router;
 
-import { createTodo, getTodos, updateTodos } from '../controllers/todos';
+import { createTodo, getTodos, updateTodos, deleteTodo } from '../controllers/todos';
 
 const router = Router();
 
@@ -16,6 +16,6 @@ router.get('/', getTodos);
 router.patch('/:id', updateTodos);
 
 // Rotta per eliminare i todo
-router.delete('/:id', );
+router.delete('/:id', deleteTodo);
 
 export default router;

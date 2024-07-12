@@ -57,3 +57,22 @@ export const updateTodos: RequestHandler<{id: string}> = (req, res, next) => {
     res.json({message: 'Todo Aggiornato!', updatedTodo: TODOS[todoIndex]});
     
 }
+
+// Definisco la rotta per eliminare il todo
+export const deleteTodo: RequestHandler<{id: string}> = (req, res, next) => {
+    const todoID = req.params.id;
+
+    // Trovo l'indice del todo da modificare
+    const todoIndex = TODOS.findIndex( todo => todo.id === todoID);
+
+    // Se l'indice è negativo allora qualcosa è andato storto
+    if (todoIndex < 0) {
+        throw new Error('Impossibile trovare il todo da modificare');
+    } 
+
+    //Elimino il todo dai TODOS
+    TODOS.splice(todoIndex, 1);
+
+    res.json({message: 'Todo eliminato!'});
+
+}

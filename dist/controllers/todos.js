@@ -1,7 +1,7 @@
 "use strict";
 // Qui definirò le funzioni per puntare alle nostre rotte
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTodos = exports.getTodos = exports.createTodo = void 0;
+exports.deleteTodo = exports.updateTodos = exports.getTodos = exports.createTodo = void 0;
 const todo_1 = require("../models/todo");
 // Creo un array di todos per la nostra lista
 const TODOS = [];
@@ -42,3 +42,17 @@ const updateTodos = (req, res, next) => {
     res.json({ message: 'Todo Aggiornato!', updatedTodo: TODOS[todoIndex] });
 };
 exports.updateTodos = updateTodos;
+// Definisco la rotta per eliminare il todo
+const deleteTodo = (req, res, next) => {
+    const todoID = req.params.id;
+    // Trovo l'indice del todo da modificare
+    const todoIndex = TODOS.findIndex(todo => todo.id === todoID);
+    // Se l'indice è negativo allora qualcosa è andato storto
+    if (todoIndex < 0) {
+        throw new Error('Impossibile trovare il todo da modificare');
+    }
+    //Elimino il todo dai TODOS
+    TODOS.splice(todoIndex, 1);
+    res.json({ message: 'Todo eliminato!' });
+};
+exports.deleteTodo = deleteTodo;

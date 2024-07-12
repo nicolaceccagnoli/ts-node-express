@@ -12,5 +12,5 @@ router.get('/', todos_1.getTodos);
 // Rotta per modificare i todo
 router.patch('/:id', todos_1.updateTodos);
 // Rotta per eliminare i todo
-router.delete('/:id');
+router.delete('/:id', todos_1.deleteTodo);
 exports.default = router;
