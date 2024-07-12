@@ -1,7 +1,7 @@
 "use strict";
 // Qui definirò le funzioni per puntare alle nostre rotte
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTodo = void 0;
+exports.getTodos = exports.createTodo = void 0;
 const todo_1 = require("../models/todo");
 // Creo un array di todos per la nostra lista
 const TODOS = [];
@@ -18,3 +18,7 @@ const createTodo = (req, res, next) => {
     res.status(201).json({ message: 'Todo creato', createTodo: newTodo });
 };
 exports.createTodo = createTodo;
+const getTodos = (req, res, next) => {
+    res.status(201).json({ todos: TODOS });
+};
+exports.getTodos = getTodos;
